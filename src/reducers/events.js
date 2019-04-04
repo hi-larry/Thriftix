@@ -1,5 +1,13 @@
 import { RECEIVE_EVENTS } from '../actions/events'
 
-export default function events(state = {}, actions) {
-  
+export default function tickets(state = {}, action) {
+  switch(action.type) {
+    case RECEIVE_EVENTS:
+      return {
+        ...state,
+        ...action.events
+      }
+    default:
+      return state
+  }
 }

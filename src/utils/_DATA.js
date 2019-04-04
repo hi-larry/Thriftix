@@ -27,7 +27,7 @@ let events = {
     venue: 'xyz'
   },
   "6ni6ok3ym7mf1p33lnez": {
-    id: '8xf0y6ziyjabvozdd253nd',
+    id: '6ni6ok3ym7mf1p33lnez',
     title: 'Martin Garrix',
     datetime: 'SAT APR 20 10PM',
     imageURL: 'http://tinyurl.com/y27josyw',
@@ -143,4 +143,8 @@ export function _saveEventTicket ({ authedUser, id, event }) {
       res()
     }, 500)
   })
+}
+
+export function _getVenueInfo(id) {
+  return venues[id];
 }

@@ -1,8 +1,8 @@
-import { RECEIVE_TICKETS, ADD_TICKET, BUY_TICKET } from '../actions/ticket'
+import { RECEIVE_TICKETS, ADD_TICKET, BUY_TICKET } from '../actions/tickets'
 
 export default function tickets(state = {}, action) {
   switch(action.type) {
-    case RECEIVE_EVENTS:
+    case RECEIVE_TICKETS:
       return {
         ...state,
         ...action.tickets
