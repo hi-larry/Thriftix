@@ -9,7 +9,7 @@ class Events extends Component {
 
     return (
       <div>
-        <h1>Events</h1>
+        <h2>Events</h2>
         <ul className='events'>
           {events.map((event) => (
             <li key={event.id}>
