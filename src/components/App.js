@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Profile from './Profile'
 import Events from './Events'
+import Ticket from './Ticket'
 import AddTicket from './AddTicket'
 import { handleInitialData } from '../actions/shared'
+import Nav from './Nav'
 
 class App extends Component {
   componentDidMount() {
@@ -11,13 +15,19 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <Router>
+        <Fragment>
+        <Nav />
         {this.props.loading
           ? null
-          : <AddTicket />
+          : <div>
+              <Route exact path='/' component={Profile} />
+              <Route exact path='/events' component={Events} />
+              <Route exact path='/ticket' component={Ticket} />
+            </div>
         }
-
-      </div>
+        </Fragment>
+      </Router>
     );
   }
 }

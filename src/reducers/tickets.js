@@ -10,7 +10,10 @@ export default function tickets(state = {}, action) {
     case ADD_TICKET:
       return {
         ...state,
-        [action.ticket.id]: action.ticket
+        [action.ticket.id]: {
+          ...action.ticket,
+          seller: action.user
+        }
       }
     case BUY_TICKET:
       const { user, id } = action;
@@ -20,7 +23,7 @@ export default function tickets(state = {}, action) {
         ...state,
         [id]: {
           ...ticket,
-          buying: user
+          buyer: user
         }
       }
     default:

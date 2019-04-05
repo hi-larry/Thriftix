@@ -1,9 +1,11 @@
 import {
   _getUsers,
   _getEvents,
+  _getTickets,
   _saveTicket,
   _saveEventTicket,
-  _getVenueInfo
+  _getVenueInfo,
+  _getEventInfo
 } from './_DATA.js'
 
 function formatEvents(events) {
@@ -37,9 +39,11 @@ export function getInitialData() {
   return Promise.all([
     _getUsers(),
     _getEvents(),
-  ]).then(([users, events]) => ({
+    _getTickets(),
+  ]).then(([users, events, tickets]) => ({
     users: formatUsers(users),
-    events: formatEvents(events)
+    events: formatEvents(events),
+    tickets
   }))
 }
 
@@ -53,4 +57,8 @@ export function saveEventTicket(args) {
 
 export function getVenueInfo(id) {
   return _getVenueInfo(id)
+}
+
+export function getEventInfo(id) {
+  return _getEventInfo(id)
 }

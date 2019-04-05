@@ -7,5 +7,6 @@ import { combineReducers } from 'redux'
 export default combineReducers({
   authUser,
   users,
-  events
+  events,
+  tickets
 })

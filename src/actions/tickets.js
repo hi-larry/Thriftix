@@ -1,3 +1,5 @@
+import { saveTicket } from '../utils/api'
+
 export const RECEIVE_TICKETS = 'RECEIVE_TICKETS';
 export const ADD_TICKET = 'ADD_TICKET';
 export const BUY_TICKET = 'BUY_TICKET';
@@ -9,12 +11,10 @@ export function receiveTickets(tickets) {
   }
 }
 
-export function addTicket({ user, ticket, event }) {
+export function addTicket(ticket) {
   return {
     type: ADD_TICKET,
-    user,
-    ticket,
-    event
+    ticket
   }
 }
 
@@ -22,5 +22,16 @@ export function buyTicket(id) {
   return {
     type: BUY_TICKET,
     id
+  }
+}
+
+export function handleAddTicket(ticket) {
+  return (dispatch, getState) => {
+    const { authUser } = getState();
+
+    return saveTicket({
+      ...ticket,
+      seller: authUser
+    }).then(ticket => dispatch(addTicket(ticket)))
   }
 }

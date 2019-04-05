@@ -13,6 +13,17 @@ code {
     monospace;
 }
 
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+.nav li {
+  margin: 0 5px;
+}
+
+
 .events {
   flex-direction: row;
   display: flex;

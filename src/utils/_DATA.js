@@ -12,7 +12,7 @@ let users = {
     name: 'Razvan LM',
     email: 'deathionex@gmail.com',
     avatarURL: 'http://tinyurl.com/zxksxg5',
-    selling: [],
+    selling: ['vthrdm985a262al8qx3do'],
     buying: ['loxhs1bqm25b708cmbf3g']
   }
 }
@@ -60,6 +60,18 @@ let tickets = {
     status: 'sold',
     seller: 'marshbox',
     buyer: 'razvanlm'
+  },
+  "vthrdm985a262al8qx3do": {
+    id: 'vthrdm985a262al8qx3do',
+    event: '8xf0y6ziyjabvozdd253nd',
+    originalPrice: '30',
+    sellingPrice: '30',
+    currency: 'CAD',
+    type: 'GA',
+    fileURL: '',
+    status: 'available',
+    seller: 'razvanlm',
+    buyer: ''
   }
 }
 
@@ -89,22 +101,26 @@ export function _getEvents () {
   })
 }
 
-function formatTicket ({ user, ticket }) {
+export function _getTickets () {
+  return new Promise((res, rej) => {
+    setTimeout(() => res({...tickets}), 1000)
+  })
+}
+
+function formatTicket (ticket) {
   return {
     ...ticket,
     id: generateUID(),
     currency: 'CAD',
     type: 'GA',
-    fileURL: '',
     status: 'available',
-    seller: user,
     buyer: ''
   }
 }
 
-export function _saveTicket ({ user, ticket }) {
+export function _saveTicket (ticket) {
   return new Promise((res, rej) => {
-    const formattedTicket = formatTicket(user, ticket)
+    const formattedTicket = formatTicket(ticket)
 
     setTimeout(() => {
       tickets = {
@@ -147,4 +163,8 @@ export function _saveEventTicket ({ authedUser, id, event }) {
 
 export function _getVenueInfo(id) {
   return venues[id];
+}
+
+export function _getEventInfo(id) {
+  return events[id];
 }
