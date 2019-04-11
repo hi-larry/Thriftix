@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { getEventInfo } from '../utils/api'
+import { Table } from 'react-bootstrap'
 
 class Ticket extends Component {
   render() {
@@ -8,15 +9,31 @@ class Ticket extends Component {
 
     return (
       <div>
-        <h1>Your Tickets</h1>
+        <h2>Your Tickets</h2>
+        <Table responsive>
+          <thead>
+            <tr>
+              <th>Ticket #</th>
+              <th>Event</th>
+              <th>Ticket Type</th>
+              <th>Price</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+          {tickets.map((ticket) => (
+            <tr>
+              <td>{ticket.id}</td>
+              <td>{getEventInfo(ticket.event).title}</td>
+              <td>{ticket.type}</td>
+              <td>{ticket.sellingPrice} {ticket.currency}</td>
+              <td>{ticket.status}</td>
+            </tr>
+          ))}
+          </tbody>
+        </Table>
         <ul>
-        {tickets.map((ticket) => (
-          <li key={ticket.id}>
-            <p>{ticket.id}</p>
-            <p>Ticket to {getEventInfo(ticket.event).title}</p>
-            <p>Selling at {ticket.sellingPrice}</p>
-          </li>
-        ))}
+
         </ul>
 
 

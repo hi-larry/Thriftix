@@ -17,6 +17,7 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
+        <div class='container'>
         <Nav />
         {this.props.loading
           ? null
@@ -26,6 +27,7 @@ class App extends Component {
               <Route exact path='/ticket' component={Ticket} />
             </div>
         }
+        </div>
         </Fragment>
       </Router>
     );

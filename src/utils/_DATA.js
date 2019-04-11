@@ -10,7 +10,7 @@ let users = {
   razvanlm: {
     id: 'razvanlm',
     name: 'Razvan LM',
-    email: 'deathionex@gmail.com',
+    email: 'raz@gmail.com',
     avatarURL: 'http://tinyurl.com/zxksxg5',
     selling: ['vthrdm985a262al8qx3do'],
     buying: ['loxhs1bqm25b708cmbf3g']
